@@ -1,0 +1,35 @@
+#contenedor{  
+    border:2px solid #C0C0C0;  
+}  
+
+#cabecera{  
+    height:8px;
+} 
+
+#menu{  
+    height:8px;
+}
+
+#cuerpo{  
+    height:480px;  
+    float:left;  
+    width:100%;
+}  
+
+#pie{  
+    height:8px;   
+    clear:both;
+    text-align: center;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+#tId{
+    text-align: center;
+}
+
+#tBoton{
+    text-align: right;
+}

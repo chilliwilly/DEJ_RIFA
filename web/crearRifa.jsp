@@ -3,9 +3,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Crear Rifa</title>
     </head>
     <body>
-        <h1>Hello World Seba</h1>
+        <h1><u>Crear Rifa</u></h1>
     </body>
 </html>
