@@ -35,6 +35,7 @@
                             <td colspan="3"><input type="submit" value="Crear"/></td>
                         </tr>
                     </table>
+                    <h3><c:out value="${estado}" /></h3>
                 </form>
             </div>
             <%@include file="WEB-INF/pie.jspf" %>

@@ -11,10 +11,9 @@ public class Rifa {
         //Metodo Constructor
     }
 
-    public Rifa(int nro, String nombre, Date fecha) {
+    public Rifa(int nro, String nombre) {
         this.nro = nro;
         this.nombre = nombre;
-        this.fecha = fecha;
     }
 
     public int getNro() {
