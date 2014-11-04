@@ -28,7 +28,14 @@
                         <td><c:out value="${num.nro}" /></td>
                         <td><c:out value="${num.nombre}" /></td>
                         <td><c:out value="${num.fecha}" /></td>
-                        <td>Comprar</td>
+                        <td>
+                            <c:url var="urlComprar" value="/ServletComprar">
+                                <c:param name="numero" value="${num.nro}" />
+                            </c:url>
+                            <a href="${urlComprar}">
+                                Comprar
+                            </a>
+                        </td>
                     </tr>
                     </c:forEach>
                     
