@@ -1,6 +1,7 @@
 package rifa.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -56,7 +57,6 @@ public class RifaDAO {
     public ArrayList<Rifa> listarNumeros()
     {
         ArrayList<Rifa> listado = new ArrayList<Rifa>();
-        Rifa rifa = new Rifa();
         
         String sql = "SELECT * FROM NUMERO_RIFA ORDER BY RIFA_NUMERO ASC;";
         try (PreparedStatement stmt = cnx.prepareStatement(sql)){
@@ -64,17 +64,15 @@ public class RifaDAO {
             
             while(rs.next())
             {
-                rifa.setNro(rs.getInt("RIFA_NUMERO"));
-                rifa.setNombre(rs.getString("RIFA_NOMBRE"));
+                int num = rs.getInt("RIFA_NUMERO");
+                String nom = rs.getString("RIFA_NOMBRE");
+                Date fecha = rs.getDate("RIFA_FECHA");
+                
+                Rifa rifa = new Rifa(num, nom);
                 rifa.setFecha(rs.getDate("RIFA_FECHA"));
                 listado.add(rifa);
             }
-            
-            System.out.println("Tamaño: "+listado.size());
-            System.out.println("Num:"+Integer.toString(listado.get(0).getNro()));
-            System.out.println("Num:"+Integer.toString(listado.get(2).getNro()));
-            System.out.println("Num:"+Integer.toString(listado.get(4).getNro()));
-            System.out.println("Num:"+Integer.toString(listado.get(6).getNro()));
+
             return listado;
             
         } catch (Exception ex) {
