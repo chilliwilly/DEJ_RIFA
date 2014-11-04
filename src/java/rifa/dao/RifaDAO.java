@@ -2,6 +2,10 @@ package rifa.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Calendar;
 import rifa.estructura.Rifa;
 
 public class RifaDAO {
@@ -33,5 +37,70 @@ public class RifaDAO {
         } catch (Exception ex){
             throw new RuntimeException("Error al Eliminar Rifa", ex);
         }
+    }
+    
+    public void editarNumero(Rifa rifa){
+        Timestamp ahora = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+        String sql = "UPDATE NUMERO_RIFA SET RIFA_NOMBRE = ?, RIFA_FECHA = ? WHERE RIFA_NUMERO = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+            stmt.setInt(1, rifa.getNro());
+            stmt.setTimestamp(2, ahora);
+            stmt.setString(3, rifa.getNombre());
+            stmt.executeUpdate();
+            
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al Actualizar Número", ex);
+        }
+    }
+    
+    public ArrayList<Rifa> listarNumeros()
+    {
+        ArrayList<Rifa> listado = new ArrayList<Rifa>();
+        Rifa rifa = new Rifa();
+        
+        String sql = "SELECT * FROM NUMERO_RIFA ORDER BY RIFA_NUMERO ASC;";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while(rs.next())
+            {
+                rifa.setNro(rs.getInt("RIFA_NUMERO"));
+                rifa.setNombre(rs.getString("RIFA_NOMBRE"));
+                rifa.setFecha(rs.getDate("RIFA_FECHA"));
+                listado.add(rifa);
+            }
+            
+            System.out.println("Tamaño: "+listado.size());
+            System.out.println("Num:"+Integer.toString(listado.get(0).getNro()));
+            System.out.println("Num:"+Integer.toString(listado.get(2).getNro()));
+            System.out.println("Num:"+Integer.toString(listado.get(4).getNro()));
+            System.out.println("Num:"+Integer.toString(listado.get(6).getNro()));
+            return listado;
+            
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al Buscar Número", ex);
+        }
+    }
+    
+    public Rifa buscarNumero(int numero)
+    {
+       Rifa rifa = new Rifa();
+       
+       String sql = "SELECT RIFA_NOMBRE, RIFA_FECHA, RIFA_NUMERO FROM NUMERO_RIFA WHERE RIFA_NUMERO = ?";
+       try (PreparedStatement stmt = cnx.prepareStatement(sql)){
+            stmt.setInt(1, rifa.getNro());
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            if(rs.first())
+            {
+                rifa.setNro(rs.getInt("RIFA_NUMERO"));
+                rifa.setNombre(rs.getString("RIFA_NOMBRE"));
+                rifa.setFecha(rs.getDate("RIFA_FECHA"));
+            }
+            
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al Buscar Número", ex);
+        }
+       return rifa;
     }
 }

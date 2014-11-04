@@ -3,7 +3,7 @@
 <div id = "menu">
     <a href="<c:url value="/CrearServlet" />">Crear Rifa</a>
     |
-    <a href="<c:url value="/" />">Listar Números</a>
+    <a href="<c:url value="/ListarNrosServlet" />">Listar Números</a>
     |
     <a href="<c:url value="/" />">Sortear Rifa</a>
     <hr />
