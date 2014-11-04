@@ -1,8 +1,9 @@
 package rifa.estructura;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Rifa {
+public class Rifa implements Serializable{
     private int nro;
     private String nombre;
     private Date fecha;
