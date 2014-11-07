@@ -1,7 +1,11 @@
 package rifa.negocio;
 
 import java.sql.Connection;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import rifa.dao.RifaDAO;
 import rifa.estructura.Rifa;
 
@@ -27,16 +31,25 @@ public class RifaService {
         }
     }
     
-    public void comprarNumero(Rifa rifa)
+    public String comprarNumero(Rifa rifa)
     {
+        String msg = "";
+//        Date d = (Date) Calendar.getInstance().getTime();
+//        DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+//        String fecha = df.format(d);        
+        
         if(numeroExiste(rifa.getNro()))
         {
-            // Debe alertar que el numero ya está ocupado por otra persona
+            msg = "El numero ya ha sido comprado.";
         }
         else
         {
-            // Debe reservar el numero a la persona
+            RifaDAO dao = new RifaDAO(cnx);
+            dao.editarNumero(rifa);
+            msg = "Compra de numero exitosa!.";
         }
+        
+        return msg;
     }
     
     public ArrayList<Rifa> listaNumeros()

@@ -29,7 +29,7 @@
                         <td><c:out value="${num.nombre}" /></td>
                         <td><c:out value="${num.fecha}" /></td>
                         <td>
-                            <c:url var="urlComprar" value="/ServletComprar">
+                            <c:url var="urlComprar" value="/ComprarServlet">
                                 <c:param name="numero" value="${num.nro}" />
                             </c:url>
                             <a href="${urlComprar}">

@@ -44,9 +44,9 @@ public class RifaDAO {
         Timestamp ahora = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
         String sql = "UPDATE NUMERO_RIFA SET RIFA_NOMBRE = ?, RIFA_FECHA = ? WHERE RIFA_NUMERO = ?";
         try (PreparedStatement stmt = cnx.prepareStatement(sql)){
-            stmt.setInt(1, rifa.getNro());
+            stmt.setString(1, rifa.getNombre());
             stmt.setTimestamp(2, ahora);
-            stmt.setString(3, rifa.getNombre());
+            stmt.setInt(3, rifa.getNro());
             stmt.executeUpdate();
             
         } catch (Exception ex) {
@@ -85,17 +85,16 @@ public class RifaDAO {
        Rifa rifa = new Rifa();
        
        String sql = "SELECT RIFA_NOMBRE, RIFA_FECHA, RIFA_NUMERO FROM NUMERO_RIFA WHERE RIFA_NUMERO = ?";
-       try (PreparedStatement stmt = cnx.prepareStatement(sql)){
-            stmt.setInt(1, rifa.getNro());
-            ResultSet rs = stmt.executeQuery(sql);
-            
-            if(rs.first())
-            {
-                rifa.setNro(rs.getInt("RIFA_NUMERO"));
-                rifa.setNombre(rs.getString("RIFA_NOMBRE"));
-                rifa.setFecha(rs.getDate("RIFA_FECHA"));
+       try (PreparedStatement stmt = cnx.prepareStatement(sql);){
+            stmt.setInt(1, numero);
+            try(ResultSet rs = stmt.executeQuery()){            
+                if(rs.next())//first()
+                {
+                    rifa.setNro(rs.getInt("RIFA_NUMERO"));
+                    rifa.setNombre(rs.getString("RIFA_NOMBRE"));
+                    rifa.setFecha(rs.getDate("RIFA_FECHA"));
+                }
             }
-            
         } catch (Exception ex) {
             throw new RuntimeException("Error al Buscar Número", ex);
         }
