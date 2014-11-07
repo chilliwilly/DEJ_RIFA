@@ -5,6 +5,6 @@
     |
     <a href="<c:url value="/ListarNrosServlet" />">Listar Números</a>
     |
-    <a href="<c:url value="/" />">Sortear Rifa</a>
+    <a href="<c:url value="/RifarServlet" />">Sortear Rifa</a>
     <hr />
 </div>

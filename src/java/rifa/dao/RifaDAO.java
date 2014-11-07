@@ -105,4 +105,32 @@ public class RifaDAO {
         }
        return rifa;
     }
+    
+    public ArrayList<Rifa> seleccionGanadores()
+    {
+        ArrayList<Rifa> listado = new ArrayList<Rifa>();
+        String estado = "(Disponible)";
+        String sql = "SELECT * FROM NUMERO_RIFA WHERE RIFA_NOMBRE NOT LIKE ? ORDER BY RAND() LIMIT 3;";
+        try (PreparedStatement stmt = cnx.prepareStatement(sql);){
+            stmt.setString(1, estado);
+            try(ResultSet rs = stmt.executeQuery())
+            {            
+                while(rs.next())
+                {
+                    int num = rs.getInt("RIFA_NUMERO");
+                    String nom = rs.getString("RIFA_NOMBRE");
+                    Date fecha = rs.getDate("RIFA_FECHA");
+
+                    Rifa rifa = new Rifa(num, nom);
+                    rifa.setFecha(rs.getTimestamp("RIFA_FECHA"));
+                    listado.add(rifa);
+                }
+            }
+
+            return listado;
+            
+        } catch (Exception ex) {
+            throw new RuntimeException("Error al Buscar Número", ex);
+        }
+    }
 }

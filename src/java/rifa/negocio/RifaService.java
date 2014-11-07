@@ -82,4 +82,14 @@ public class RifaService {
         
         return existe;
     }
+    
+    public ArrayList<Rifa> listaGanadores()
+    {
+        ArrayList<Rifa> listado = new ArrayList<Rifa>();
+        RifaDAO dao = new RifaDAO(cnx);
+        
+        listado = dao.seleccionGanadores();
+
+        return listado;
+    }
 }
