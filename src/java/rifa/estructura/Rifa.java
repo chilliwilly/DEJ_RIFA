@@ -2,11 +2,12 @@ package rifa.estructura;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Rifa implements Serializable{
     private int nro;
     private String nombre;
-    private Date fecha;
+    private Timestamp fecha;
 
     public Rifa() {
         //Metodo Constructor
@@ -33,11 +34,11 @@ public class Rifa implements Serializable{
         this.nombre = nombre;
     }
 
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 }

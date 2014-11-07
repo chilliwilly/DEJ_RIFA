@@ -74,7 +74,7 @@ public class RifaDAO {
                 Date fecha = rs.getDate("RIFA_FECHA");
                 
                 Rifa rifa = new Rifa(num, nom);
-                rifa.setFecha(rs.getDate("RIFA_FECHA"));
+                rifa.setFecha(rs.getTimestamp("RIFA_FECHA"));
                 listado.add(rifa);
             }
 
@@ -97,7 +97,7 @@ public class RifaDAO {
                 {
                     rifa.setNro(rs.getInt("RIFA_NUMERO"));
                     rifa.setNombre(rs.getString("RIFA_NOMBRE"));
-                    rifa.setFecha(rs.getDate("RIFA_FECHA"));
+                    rifa.setFecha(rs.getTimestamp("RIFA_FECHA"));
                 }
             }
         } catch (Exception ex) {
