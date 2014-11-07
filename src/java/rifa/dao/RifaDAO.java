@@ -41,7 +41,12 @@ public class RifaDAO {
     }
     
     public void editarNumero(Rifa rifa){
-        Timestamp ahora = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+        //Timestamp ahora = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+        
+        Calendar calendar = Calendar.getInstance();
+        java.sql.Timestamp ahora = new java.sql.Timestamp(calendar.getTime().getTime());
+
+        
         String sql = "UPDATE NUMERO_RIFA SET RIFA_NOMBRE = ?, RIFA_FECHA = ? WHERE RIFA_NUMERO = ?";
         try (PreparedStatement stmt = cnx.prepareStatement(sql)){
             stmt.setString(1, rifa.getNombre());

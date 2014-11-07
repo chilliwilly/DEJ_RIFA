@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!--c:out value=num.fecha-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,7 +28,7 @@
                     <tr>
                         <td><c:out value="${num.nro}" /></td>
                         <td><c:out value="${num.nombre}" /></td>
-                        <td><c:out value="${num.fecha}" /></td>
+                        <td><fmt:formatDate pattern="dd/MM/yyyy HH:mm:ss" value="${num.fecha}"/></td>
                         <td>
                             <c:url var="urlComprar" value="/ComprarServlet">
                                 <c:param name="numero" value="${num.nro}" />

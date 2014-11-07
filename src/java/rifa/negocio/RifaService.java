@@ -36,7 +36,7 @@ public class RifaService {
         String msg = "";
 //        Date d = (Date) Calendar.getInstance().getTime();
 //        DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-//        String fecha = df.format(d);        
+//        String fecha = df.format(d);
         
         if(numeroExiste(rifa.getNro()))
         {
