@@ -14,8 +14,7 @@
             <div id = "cuerpo">
                 <br />
                 <h1><u>Resultado Compra</u></h1>
-                <br>
-                <c:out value="${mensajeCompra}" />
+                <h3><c:out value="${mensajeCompra}" /></h3>
             </div>
             <%@include file="WEB-INF/pie.jspf" %>
         </div>
