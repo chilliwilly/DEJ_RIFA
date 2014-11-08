@@ -17,5 +17,7 @@
                 <br>
                 <c:out value="${mensajeCompra}" />
             </div>
+            <%@include file="WEB-INF/pie.jspf" %>
+        </div>
     </body>
 </html>
