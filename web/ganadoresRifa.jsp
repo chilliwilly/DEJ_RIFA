@@ -20,7 +20,6 @@
                         <td>Num</td>
                         <td>Nombre</td>
                         <td>Fecha</td>
-                        <td>Comprar</td>
                     </tr>
                     
                     <c:forEach items="${lista}" var="num">
@@ -28,14 +27,6 @@
                         <td><c:out value="${num.nro}" /></td>
                         <td><c:out value="${num.nombre}" /></td>
                         <td><fmt:formatDate pattern="dd/MM/yyyy HH:mm:ss" value="${num.fecha}"/></td>
-                        <td>
-                            <c:url var="urlComprar" value="/ComprarServlet">
-                                <c:param name="numero" value="${num.nro}" />
-                            </c:url>
-                            <a href="${urlComprar}">
-                                Comprar
-                            </a>
-                        </td>
                     </tr>
                     </c:forEach>
                     
