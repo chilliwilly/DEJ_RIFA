@@ -1,3 +1,7 @@
+body{
+    font-family:'Open Sans', sans-serif;
+}
+
 #contenedor{  
     border:2px solid #C0C0C0;  
 }  
@@ -8,6 +12,10 @@
 
 #menu{  
     height:8px;
+}
+
+#menu a{
+    
 }
 
 #cuerpo{  
