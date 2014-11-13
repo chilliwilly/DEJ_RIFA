@@ -7,7 +7,6 @@
 package rifa.presentacion;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.ArrayList;
 import javax.annotation.Resource;
@@ -30,7 +29,7 @@ public class RifarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try (Connection cnx = ds.getConnection()){
-            ArrayList<Rifa> lista = new ArrayList<Rifa>();
+            ArrayList<Rifa> lista = new ArrayList<>();
             RifaService rifa = new RifaService(cnx);
             
             lista = rifa.listaGanadores();

@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import rifa.estructura.Rifa;
 
 public class RifaDAO {
@@ -61,7 +61,7 @@ public class RifaDAO {
     
     public ArrayList<Rifa> listarNumeros()
     {
-        ArrayList<Rifa> listado = new ArrayList<Rifa>();
+        ArrayList<Rifa> listado = new ArrayList<>();
         
         String sql = "SELECT * FROM NUMERO_RIFA ORDER BY RIFA_NUMERO ASC;";
         try (PreparedStatement stmt = cnx.prepareStatement(sql)){
@@ -70,7 +70,10 @@ public class RifaDAO {
             while(rs.next())
             {
                 int num = rs.getInt("RIFA_NUMERO");
-                String nom = rs.getString("RIFA_NOMBRE");
+                String nom = "(Disponible)";
+                if(rs.getString("RIFA_NOMBRE") != null){
+                    nom = rs.getString("RIFA_NOMBRE");
+                }
                 Date fecha = rs.getDate("RIFA_FECHA");
                 
                 Rifa rifa = new Rifa(num, nom);
@@ -108,8 +111,8 @@ public class RifaDAO {
     
     public ArrayList<Rifa> seleccionGanadores()
     {
-        ArrayList<Rifa> listado = new ArrayList<Rifa>();
-        String estado = "(Disponible)";
+        ArrayList<Rifa> listado = new ArrayList<>();
+        String estado = "";
         String sql = "SELECT * FROM NUMERO_RIFA WHERE RIFA_NOMBRE NOT LIKE ? ORDER BY RAND() LIMIT 3;";
         try (PreparedStatement stmt = cnx.prepareStatement(sql);){
             stmt.setString(1, estado);
@@ -126,7 +129,9 @@ public class RifaDAO {
                     listado.add(rifa);
                 }
             }
-
+            
+            Collections.sort(listado);
+          
             return listado;
             
         } catch (Exception ex) {

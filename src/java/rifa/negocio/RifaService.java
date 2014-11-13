@@ -1,17 +1,13 @@
 package rifa.negocio;
 
 import java.sql.Connection;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import rifa.dao.RifaDAO;
 import rifa.estructura.Rifa;
 
 public class RifaService {
     
-    private final String nombre = "(Disponible)";
+    private final String nombre = null;
     private Connection cnx;
     
     public RifaService(Connection cnx){
@@ -54,7 +50,7 @@ public class RifaService {
     
     public ArrayList<Rifa> listaNumeros()
     {
-        ArrayList<Rifa> listado = new ArrayList<Rifa>();
+        ArrayList<Rifa> listado = new ArrayList<>();
         RifaDAO dao = new RifaDAO(cnx);
         
         listado = dao.listarNumeros();
@@ -71,21 +67,14 @@ public class RifaService {
         
         nroRifa = dao.buscarNumero(numero);
         
-        if(nroRifa.getNombre().equals("(Disponible)"))
-        {
-            existe = false;
-        }
-        else
-        {
-            existe = true;
-        }
+        existe = nroRifa.getNombre() != null;
         
         return existe;
     }
     
     public ArrayList<Rifa> listaGanadores()
     {
-        ArrayList<Rifa> listado = new ArrayList<Rifa>();
+        ArrayList<Rifa> listado = new ArrayList<>();
         RifaDAO dao = new RifaDAO(cnx);
         
         listado = dao.seleccionGanadores();

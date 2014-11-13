@@ -1,10 +1,9 @@
 package rifa.estructura;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Timestamp;
 
-public class Rifa implements Serializable{
+public class Rifa implements Serializable, Comparable{
     private int nro;
     private String nombre;
     private Timestamp fecha;
@@ -40,5 +39,12 @@ public class Rifa implements Serializable{
 
     public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
+    }
+
+    @Override
+    public int compareTo(Object rifa) {
+        int num = ((Rifa)rifa).getNro();
+        
+        return nro - num;
     }
 }
