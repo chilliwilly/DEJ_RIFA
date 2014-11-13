@@ -21,7 +21,6 @@
                         <td>Nombre</td>
                         <td>Fecha</td>
                     </tr>
-                    
                     <c:forEach items="${lista}" var="num">
                     <tr>
                         <td><c:out value="${num.nro}" /></td>
@@ -29,7 +28,6 @@
                         <td><fmt:formatDate pattern="dd/MM/yyyy HH:mm:ss" value="${num.fecha}"/></td>
                     </tr>
                     </c:forEach>
-                    
                 </table>
             </div>
             <%@include file="WEB-INF/pie.jspf" %>

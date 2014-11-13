@@ -23,7 +23,6 @@
                         <td>Fecha</td>
                         <td>Comprar</td>
                     </tr>
-                    
                     <c:forEach items="${lista}" var="num">
                     <tr>
                         <td><c:out value="${num.nro}" /></td>
@@ -39,7 +38,6 @@
                         </td>
                     </tr>
                     </c:forEach>
-                    
                 </table>
             </div>
             <%@include file="WEB-INF/pie.jspf" %>
