@@ -22,6 +22,7 @@ public class ListarNrosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         try (Connection cnx = ds.getConnection()){
             ArrayList<Rifa> lista = new ArrayList<>();
             RifaService rifa = new RifaService(cnx);
