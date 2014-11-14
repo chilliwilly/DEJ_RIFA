@@ -5,17 +5,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="CSS/estilos.css" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <title>Resultado Compra Rifa</title>
     </head>
     <body>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <div id="contendor">
             <%@include file="WEB-INF/banner.jspf" %>
             <%@include file="WEB-INF/menu.jspf" %>
             <div id = "cuerpo">
-                <br />
-                <h1><u>Resultado Compra</u></h1>
-                <h3><c:out value="${mensajeCompra}" /></h3>
+                <div class="page-header">
+                    <h1>Resultado de Compra</h1>
+                </div>
+                <p>
+                    <c:if test="${not empty mensajeCompra}">
+                        <c:if test="${empty error}">
+                            <div class="alert alert-success"><c:out value="${mensajeCompra}" /></div>
+                        </c:if>
+                        <c:if test="${not empty error}">
+                            <div class="alert alert-danger"><c:out value="${mensajeCompra}" /></div>
+                        </c:if>
+                    </c:if>
+                </p>
             </div>
             <%@include file="WEB-INF/pie.jspf" %>
         </div>

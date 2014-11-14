@@ -31,10 +31,12 @@ public class ComprarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         int nrorifa = Integer.parseInt(request.getParameter("numero"));
         String nombrerifa = request.getParameter("nombre");
         
         String mensaje = "";
+        String error = "";
         
         try (Connection cnx = ds.getConnection()){
             Rifa r = new Rifa(nrorifa, nombrerifa);
@@ -42,7 +44,12 @@ public class ComprarServlet extends HttpServlet {
             
             mensaje = rifa.comprarNumero(r);
             
+            if("El numero ya ha sido comprado.".equals(mensaje)){
+                error = "Error";
+            }
+            
             request.setAttribute("mensajeCompra",mensaje);
+            request.setAttribute("error", error);
             request.getRequestDispatcher("/resultadoCompra.jsp").forward(request, response);
         } catch (Exception ex) {
             throw new RuntimeException("Error", ex);

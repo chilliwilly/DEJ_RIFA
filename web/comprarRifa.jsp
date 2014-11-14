@@ -5,46 +5,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="CSS/estilos.css" type="text/css"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <title>Comprar Rifa</title>
     </head>
     <body>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
         <div id="contenedor">
             <%@include file="WEB-INF/banner.jspf" %>
             <%@include file="WEB-INF/menu.jspf" %>
             <div id="cuerpo">
-                <br>
-                <h1><u>Comprar Rifa</u></h1>
-                <form action="<c:url value="/ComprarServlet" />" method="post">
-                    <table>
-                        <tr>
-                            <td>
-                                Numero a Comprar:
-                            </td>
-                            <td>
-                                <c:out value="${rifaNumero}"/>
-                                <input type="hidden"
-                                    name="numero"
-                                    value="<c:out value="${rifaNumero}" />"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Nombre:
-                            </td>
-                            <td>
-                                <input type="text" 
-                                       required="true" 
-                                       name="nombre" 
-                                       placeholder="Ingrese Su Nombre"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" value="Comprar"/>
-                            </td>
-                        </tr>
-                    </table>                     
+                <div class="page-header">
+                    <h1>Comprar Rifa</h1>
+                </div>
+                <form class="form-inline" role="form" action="<c:url value="/ComprarServlet" />" method="post">
+                    <div class="form-group">
+                        <label for="CampoOculto">Número Rifa</label> &nbsp;
+                        <label for="NumeroRifa"><c:out value="${rifaNumero}"/></label>
+                        <input type="hidden" name="numero" value="<c:out value="${rifaNumero}" />"/>
+                    </div> <br>
+                    <div class="form-group">
+                        <label for="CampoOculto">Nombre     </label> &nbsp;
+                        <input type="text" class="form-control" placeholder="Ingrese Nombre" required="true" name="nombre">
+                    </div>
+                    &nbsp;
+                    <button type="submit" class="btn btn-primary btn-sm">Comprar Rifa</button>                  
                 </form>
             </div>
         </div>

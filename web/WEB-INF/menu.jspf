@@ -1,11 +1,14 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<div id = "menu">
-    <a href="<c:url value="/CrearServlet" />">Crear Rifa</a>
-    |
-    <a href="<c:url value="/ListarNrosServlet" />">Listar Números</a>
-    |
-    <a href="<c:url value="/RifarServlet" />">Sortear Rifa</a>
-    <hr />
-</div>
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="<c:url value="/CrearServlet" />">Crear Rifa <span class="sr-only">(current)</span></a></li>
+                <li><a href="<c:url value="/ListarNrosServlet" />">Listar Números</a></li>
+                <li><a href="<c:url value="/RifarServlet" />">Sortear Rifa</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
