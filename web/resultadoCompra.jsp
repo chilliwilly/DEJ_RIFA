@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="CSS/estilos.css" type="text/css"/>
-        <title>Resultado Compra Rifa</title>
+        <title>Resultado Compra Rifa!</title>
     </head>
     <body>
         <div id="contendor">
